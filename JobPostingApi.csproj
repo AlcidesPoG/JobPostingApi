@@ -18,7 +18,8 @@
     <Content Remove="JobPostingDomain\**" />
     <Content Remove="JobPostingInfraestructure\**" />
     <Content Remove="Utilities\**" />
-    <EmbeddedResource Remove="JobPostingApplication\**" />
+	<Content Include="wwwroot\**" CopyToPublishDirectory="PreserveNewest" />
+	<EmbeddedResource Remove="JobPostingApplication\**" />
     <EmbeddedResource Remove="JobPostingDomain\**" />
     <EmbeddedResource Remove="JobPostingInfraestructure\**" />
     <EmbeddedResource Remove="Utilities\**" />
@@ -49,6 +50,10 @@
   <ItemGroup>
     <ProjectReference Include="JobPostingApplication\JobPostingApplication.csproj" />
     <ProjectReference Include="Utilities\JobPostingUtilities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\Company\" />
   </ItemGroup>
 
 </Project>
