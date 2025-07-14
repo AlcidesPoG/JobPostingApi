@@ -17,7 +17,7 @@ namespace JobPostingApi.StartUp
                 });
             }
 
-            app.UseCors("AllowAnyOrigin");
+            app.UseCors("AllowJobPost");
             app.UseAuthentication();
             app.UseAuthorization();
         }
