@@ -80,16 +80,24 @@ namespace JobPostingApplication.Services.Services
 
                 var company = await dbContext.Companies.FirstOrDefaultAsync( x => x.CompanyId == companyId);
                 if (company == null)
-                {
+                {   
                     throw new Exception("404 not found");
+                }
+
+                var user = await dbContext.Users.FirstOrDefaultAsync(x => x.CompanyId == companyId);
+                if (user == null)
+                {
+                    throw new Exception("User not found for this company.");
                 }
 
                 string? photoUrl = await FileUploadService.UploadFileAsync(editDTO.PhotoFile, imageFolder, baseURL);
 
                 company = _mapper.Map(editDTO,company);
+                user.Name = editDTO.Name;
 
                 if (photoUrl != null)
                 {
+                    user.ProfileImage = photoUrl;
                     company.Photo = photoUrl;
                 }
                 await dbContext.SaveChangesAsync();
