@@ -27,7 +27,7 @@ namespace JobPostingApi.StartUp
             builder.Services.AddScoped<IJobPostService, JobPostService>();
             builder.Services.AddCors((options) => options.AddPolicy("AllowJobPost", policy =>
             {
-                policy.WithOrigins("http://localhost:5173/", "https://job-post-front-end.vercel.app/", "https://job-post-front-end-alcidespogs-projects.vercel.app/").AllowAnyHeader().AllowAnyMethod();
+                policy.WithOrigins("http://localhost:5173", "https://job-post-front-end.vercel.app", "https://job-post-front-end-alcidespogs-projects.vercel.app").AllowAnyHeader().AllowAnyMethod();
             }));
 
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
